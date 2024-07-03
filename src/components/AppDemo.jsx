@@ -28,17 +28,14 @@ function Chart({
 }) {
   let width = totalWidth - paddingX * 2
   let height = totalHeight - paddingY * 2
-
   let id = useId()
   let svgRef = useRef(null)
   let pathRef = useRef(null)
   let isInView = useInView(svgRef, { amount: 0.5, once: true })
   let pathWidth = useMotionValue(0)
   let [interactionEnabled, setInteractionEnabled] = useState(false)
-
   let path = ''
   let points = []
-
   for (let index = 0; index < prices.length; index++) {
     let x = paddingX + (index / (prices.length - 1)) * width
     let y =
@@ -47,7 +44,6 @@ function Chart({
     points.push({ x, y })
     path += `${index === 0 ? 'M' : 'L'} ${x.toFixed(4)} ${y.toFixed(4)}`
   }
-
   return (
     <svg
       ref={svgRef}

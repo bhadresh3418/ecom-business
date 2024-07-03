@@ -15,7 +15,7 @@ export default function Login() {
       subtitle={
         <>
           Don’t have an account?{' '}
-          <Link href="/register" className="text-cyan-600">
+          <Link href="/register" className="text-primary-600">
             Sign up
           </Link>{' '}
           for a free trial.
@@ -39,7 +39,7 @@ export default function Login() {
             required
           />
         </div>
-        <Button type="submit" color="cyan" className="mt-8 w-full">
+        <Button type="submit" color="primary" className="mt-8 w-full">
           Sign in to account
         </Button>
       </form>

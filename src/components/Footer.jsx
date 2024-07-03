@@ -1,80 +1,124 @@
-import Image from 'next/image'
-import Link from 'next/link'
-
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
-import { TextField } from '@/components/Fields'
-import { Logomark } from '@/components/Logo'
-import { NavLinks } from '@/components/NavLinks'
-import qrCode from '@/images/qr-code.svg'
-
-function QrCodeBorder(props) {
-  return (
-    <svg viewBox="0 0 96 96" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M1 17V9a8 8 0 0 1 8-8h8M95 17V9a8 8 0 0 0-8-8h-8M1 79v8a8 8 0 0 0 8 8h8M95 79v8a8 8 0 0 1-8 8h-8"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  )
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
+const footerNavigation = {
+  shop: [
+    { name: 'Bags', href: '#' },
+    { name: 'Tees', href: '#' },
+    { name: 'Objects', href: '#' },
+    { name: 'Home Goods', href: '#' },
+    { name: 'Accessories', href: '#' },
+  ],
+  company: [
+    { name: 'Who we are', href: '#' },
+    { name: 'Sustainability', href: '#' },
+    { name: 'Press', href: '#' },
+    { name: 'Careers', href: '#' },
+    { name: 'Terms & Conditions', href: '#' },
+    { name: 'Privacy', href: '#' },
+  ],
+  account: [
+    { name: 'Manage Account', href: '#' },
+    { name: 'Returns & Exchanges', href: '#' },
+    { name: 'Redeem a Gift Card', href: '#' },
+  ],
+  connect: [
+    { name: 'Contact Us', href: '#' },
+    { name: 'Facebook', href: '#' },
+    { name: 'Instagram', href: '#' },
+    { name: 'Pinterest', href: '#' },
+  ],
 }
-
 export function Footer() {
   return (
-    <footer className="border-t border-gray-200">
-      <Container>
-        <div className="flex flex-col items-start justify-between gap-y-12 pb-6 pt-16 lg:flex-row lg:items-center lg:py-16">
-          <div>
-            <div className="flex items-center text-gray-900">
-              <Logomark className="h-10 w-10 flex-none fill-cyan-500" />
-              <div className="ml-4">
-                <p className="text-base font-semibold">Pocket</p>
-                <p className="mt-1 text-sm">Invest at the perfect time.</p>
-              </div>
+    <footer aria-labelledby="footer-heading" className="bg-white">
+    <h2 id="footer-heading" className="sr-only">
+      Footer
+    </h2>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="py-20 xl:grid xl:grid-cols-3 xl:gap-8">
+        <div className="grid grid-cols-2 gap-8 xl:col-span-2">
+          <div className="space-y-16 md:grid md:grid-cols-2 md:gap-8 md:space-y-0">
+            <div>
+              <h3 className="text-sm font-medium text-gray-900">Shop</h3>
+              <ul role="list" className="mt-6 space-y-6">
+                {footerNavigation.shop.map((item) => (
+                  <li key={item.name} className="text-sm">
+                    <a href={item.href} className="text-gray-500 hover:text-gray-600">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <nav className="mt-11 flex gap-8">
-              <NavLinks />
-            </nav>
+            <div>
+              <h3 className="text-sm font-medium text-gray-900">Company</h3>
+              <ul role="list" className="mt-6 space-y-6">
+                {footerNavigation.company.map((item) => (
+                  <li key={item.name} className="text-sm">
+                    <a href={item.href} className="text-gray-500 hover:text-gray-600">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-gray-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
-            <div className="relative flex h-24 w-24 flex-none items-center justify-center">
-              <QrCodeBorder className="absolute inset-0 h-full w-full stroke-gray-300 transition-colors group-hover:stroke-cyan-500" />
-              <Image src={qrCode} alt="" unoptimized />
+          <div className="space-y-16 md:grid md:grid-cols-2 md:gap-8 md:space-y-0">
+            <div>
+              <h3 className="text-sm font-medium text-gray-900">Account</h3>
+              <ul role="list" className="mt-6 space-y-6">
+                {footerNavigation.account.map((item) => (
+                  <li key={item.name} className="text-sm">
+                    <a href={item.href} className="text-gray-500 hover:text-gray-600">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="ml-8 lg:w-64">
-              <p className="text-base font-semibold text-gray-900">
-                <Link href="#">
-                  <span className="absolute inset-0 sm:rounded-2xl" />
-                  Download the app
-                </Link>
-              </p>
-              <p className="mt-1 text-sm text-gray-700">
-                Scan the QR code to download the app from the App Store.
-              </p>
+            <div>
+              <h3 className="text-sm font-medium text-gray-900">Connect</h3>
+              <ul role="list" className="mt-6 space-y-6">
+                {footerNavigation.connect.map((item) => (
+                  <li key={item.name} className="text-sm">
+                    <a href={item.href} className="text-gray-500 hover:text-gray-600">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center border-t border-gray-200 pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6">
-          <form className="flex w-full justify-center md:w-auto">
-            <TextField
-              type="email"
-              aria-label="Email address"
-              placeholder="Email address"
+        <div className="mt-16 md:mt-16 xl:mt-0">
+          <h3 className="text-sm font-medium text-gray-900">Sign up for our newsletter</h3>
+          <p className="mt-6 text-sm text-gray-500">The latest deals and savings, sent to your inbox weekly.</p>
+          <form className="mt-2 flex sm:max-w-md">
+            <label htmlFor="email-address" className="sr-only">
+              Email address
+            </label>
+            <input
+              id="email-address"
+              type="text"
               autoComplete="email"
               required
-              className="w-60 min-w-0 shrink"
+              className="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white px-4 py-2 text-base text-indigo-500 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
-            <Button type="submit" color="cyan" className="ml-4 flex-none">
-              <span className="hidden lg:inline">Join our newsletter</span>
-              <span className="lg:hidden">Join newsletter</span>
-            </Button>
+            <div className="ml-4 flex-shrink-0">
+              <button
+                type="submit"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >
+                Sign up
+              </button>
+            </div>
           </form>
-          <p className="mt-6 text-sm text-gray-500 md:mt-0">
-            &copy; Copyright {new Date().getFullYear()}. All rights reserved.
-          </p>
         </div>
-      </Container>
-    </footer>
+      </div>
+      <div className="border-t border-gray-200 py-10">
+        <p className="text-sm text-gray-500">Copyright &copy; 2021 Your Company, Inc.</p>
+      </div>
+    </div>
+  </footer>
   )
 }
