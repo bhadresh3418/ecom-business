@@ -5,7 +5,7 @@ export function Layout({ children }) {
   return (
     <div className="bg-white">
       <Header />
-      <main className="flex-auto">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   )

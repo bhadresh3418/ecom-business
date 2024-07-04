@@ -87,9 +87,9 @@ const styles = {
       'dark:[--btn-hover-overlay:theme(colors.white/5%)]',
       '[--btn-icon:theme(colors.zinc.400)] data-[active]:[--btn-icon:theme(colors.zinc.300)] data-[hover]:[--btn-icon:theme(colors.zinc.300)]',
     ],
-    indigo: [
-      'text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.indigo.500)] [--btn-border:theme(colors.indigo.600/90%)]',
-      '[--btn-icon:theme(colors.indigo.300)] data-[active]:[--btn-icon:theme(colors.indigo.200)] data-[hover]:[--btn-icon:theme(colors.indigo.200)]',
+    primary: [
+      'text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.primary.500)] [--btn-border:theme(colors.primary.600/90%)]',
+      '[--btn-icon:theme(colors.primary.300)] data-[active]:[--btn-icon:theme(colors.primary.200)] data-[hover]:[--btn-icon:theme(colors.primary.200)]',
     ],
     cyan: [
       'text-cyan-950 [--btn-bg:theme(colors.cyan.300)] [--btn-border:theme(colors.cyan.400/80%)] [--btn-hover-overlay:theme(colors.white/25%)]',

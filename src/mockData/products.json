@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "name": "Basic Tee",
+        "href": "/product/1",
+        "price": "$35",
+        "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+        "imageAlt": "Front of men's Basic Tee in white.",
+        "color": "Black"
+    },
+    {
+        "name": "Basic Tee",
+        "href": "/product/1",
+        "price": "$35",
+        "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
+        "imageAlt": "Front of men's Basic Tee in white.",
+        "color": "Aspen White"
+    },
+    {
+        "name": "Basic Tee",
+        "href": "/product/1",
+        "price": "$35",
+        "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
+        "imageAlt": "Front of men's Basic Tee in white.",
+        "color": "Charcoal"
+    },
+    {
+        "name": "Basic Tee",
+        "href": "/product/1",
+        "price": "$35",
+        "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
+        "imageAlt": "Front of men's Basic Tee in white.",
+        "color": "Iso Dots"
+    }
+]

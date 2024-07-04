@@ -146,7 +146,7 @@ export default function Example() {
 
         {/* Featured section */}
         <section aria-labelledby="cause-heading">
-          <div className="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
+          <div className="relative bg-primary-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
             <div className="absolute inset-0 overflow-hidden">
               <img
                 src="https://tailwindui.com/img/ecommerce-images/home-page-03-feature-section-full-width.jpg"
@@ -220,7 +220,7 @@ export default function Example() {
         {/* CTA section */}
         <section aria-labelledby="sale-heading">
           <div className="overflow-hidden pt-32 sm:pt-14">
-            <div className="bg-gray-800">
+            <div className="bg-primary-800">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="relative pb-16 pt-48 sm:pb-24">
                   <div>

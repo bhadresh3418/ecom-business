@@ -104,9 +104,9 @@ const colors = {
     '[--switch-bg-ring:theme(colors.blue.700/90%)] [--switch-bg:theme(colors.blue.600)] dark:[--switch-bg-ring:transparent]',
     '[--switch:white] [--switch-ring:theme(colors.blue.700/90%)] [--switch-shadow:theme(colors.blue.900/20%)]',
   ],
-  indigo: [
-    '[--switch-bg-ring:theme(colors.indigo.600/90%)] [--switch-bg:theme(colors.indigo.500)] dark:[--switch-bg-ring:transparent]',
-    '[--switch:white] [--switch-ring:theme(colors.indigo.600/90%)] [--switch-shadow:theme(colors.indigo.900/20%)]',
+  primary: [
+    '[--switch-bg-ring:theme(colors.primary.600/90%)] [--switch-bg:theme(colors.primary.500)] dark:[--switch-bg-ring:transparent]',
+    '[--switch:white] [--switch-ring:theme(colors.primary.600/90%)] [--switch-shadow:theme(colors.primary.900/20%)]',
   ],
   violet: [
     '[--switch-bg-ring:theme(colors.violet.600/90%)] [--switch-bg:theme(colors.violet.500)] dark:[--switch-bg-ring:transparent]',

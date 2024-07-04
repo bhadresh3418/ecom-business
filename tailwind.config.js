@@ -1,6 +1,7 @@
 const headlessuiPlugin = require('@headlessui/tailwindcss')
 const formsPlugin = require('@tailwindcss/forms')
 const aspectRationPlugin = require('@tailwindcss/aspect-ratio')
+const typoGraphyPlugin = require('@tailwindcss/typography')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -37,7 +38,7 @@ module.exports = {
       },
       colors: ({ colors }) => ({
         gray: colors.neutral,
-        primary: colors.gray
+        primary: colors.indigo
       }),
       fontFamily: {
         sans: 'var(--font-inter)',
@@ -67,5 +68,5 @@ module.exports = {
       },
     },
   },
-  plugins: [formsPlugin, headlessuiPlugin, aspectRationPlugin],
+  plugins: [formsPlugin, headlessuiPlugin, aspectRationPlugin, typoGraphyPlugin],
 }

@@ -15,14 +15,8 @@
   ```
 */
 
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
   Menu,
   MenuButton,
   MenuItem,
@@ -31,95 +25,18 @@ import {
   PopoverButton,
   PopoverGroup,
   PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
 } from '@headlessui/react'
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  QuestionMarkCircleIcon,
-  ShoppingBagIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import Image from 'next/image'
+import summerCollectionImg from '@/images/summer-collection.jpg'
+import Link from 'next/link'
 
-const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
-const navigation = {
-  categories: [
-    {
-      name: 'Women',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg',
-          imageAlt: 'Model wearing minimalist watch with black wristband and white watch face.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-04.jpg',
-          imageAlt: 'Model opening tan leather long wallet with credit card pockets and cash pouch.',
-        },
-      ],
-    },
-    {
-      name: 'Men',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg',
-          imageAlt: 'Hats and sweaters on wood shelves next to various colors of t-shirts on hangers.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg',
-          imageAlt: 'Model wearing light heather gray t-shirt.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg',
-          imageAlt:
-            'Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg',
-          imageAlt: 'Model putting folded cash into slim card holder olive leather wallet with hand stitching.',
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
-  ],
-}
 const sortOptions = [
-  { name: 'Most Popular', href: '#' },
-  { name: 'Best Rating', href: '#' },
-  { name: 'Newest', href: '#' },
-  { name: 'Price: Low to High', href: '#' },
-  { name: 'Price: High to Low', href: '#' },
+  { name: 'Most Popular', href: '/products' },
+  { name: 'Best Rating', href: '/products' },
+  { name: 'Newest', href: '/products' },
+  { name: 'Price: Low to High', href: '/products' },
+  { name: 'Price: High to Low', href: '/products' },
 ]
 const filters = [
   {
@@ -173,7 +90,7 @@ const products1 = [
   {
     id: 1,
     name: 'Focus Paper Refill',
-    href: '#',
+    href: '/products',
     price: '$13',
     description: '3 sizes available',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-01.jpg',
@@ -182,7 +99,7 @@ const products1 = [
   {
     id: 2,
     name: 'Focus Card Holder',
-    href: '#',
+    href: '/products',
     price: '$64',
     description: 'Walnut',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-02.jpg',
@@ -191,7 +108,7 @@ const products1 = [
   {
     id: 3,
     name: 'Focus Carry Pouch',
-    href: '#',
+    href: '/products',
     price: '$32',
     description: 'Heather Gray',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-03.jpg',
@@ -203,7 +120,7 @@ const products2 = [
   {
     id: 7,
     name: 'Electric Kettle',
-    href: '#',
+    href: '/products',
     price: '$149',
     description: 'Black',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-07.jpg',
@@ -212,7 +129,7 @@ const products2 = [
   {
     id: 8,
     name: 'Leather Workspace Pad',
-    href: '#',
+    href: '/products',
     price: '$165',
     description: 'Black',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-08.jpg',
@@ -222,7 +139,7 @@ const products2 = [
   {
     id: 9,
     name: 'Leather Long Wallet',
-    href: '#',
+    href: '/products',
     price: '$118',
     description: 'Natural',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-09.jpg',
@@ -233,28 +150,28 @@ const products2 = [
 ]
 const footerNavigation = {
   products: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
-    { name: 'Accessories', href: '#' },
+    { name: 'Bags', href: '/products' },
+    { name: 'Tees', href: '/products' },
+    { name: 'Objects', href: '/products' },
+    { name: 'Home Goods', href: '/products' },
+    { name: 'Accessories', href: '/products' },
   ],
   company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
+    { name: 'Who we are', href: '/products' },
+    { name: 'Sustainability', href: '/products' },
+    { name: 'Press', href: '/products' },
+    { name: 'Careers', href: '/products' },
+    { name: 'Terms & Conditions', href: '/products' },
+    { name: 'Privacy', href: '/products' },
   ],
   customerService: [
-    { name: 'Contact', href: '#' },
-    { name: 'Shipping', href: '#' },
-    { name: 'Returns', href: '#' },
-    { name: 'Warranty', href: '#' },
-    { name: 'Secure Payments', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Find a store', href: '#' },
+    { name: 'Contact', href: '/products' },
+    { name: 'Shipping', href: '/products' },
+    { name: 'Returns', href: '/products' },
+    { name: 'Warranty', href: '/products' },
+    { name: 'Secure Payments', href: '/products' },
+    { name: 'FAQ', href: '/products' },
+    { name: 'Find a store', href: '/products' },
   ],
 }
 
@@ -301,7 +218,7 @@ export default function ProductCategories() {
                       {sortOptions.map((option) => (
                         <MenuItem key={option}>
                           {({ focus }) => (
-                            <a
+                            <Link
                               href={option.href}
                               className={classNames(
                                 focus ? 'bg-gray-100' : '',
@@ -309,7 +226,7 @@ export default function ProductCategories() {
                               )}
                             >
                               {option.name}
-                            </a>
+                            </Link>
                           )}
                         </MenuItem>
                       ))}
@@ -374,6 +291,34 @@ export default function ProductCategories() {
               </div>
             </section>
 
+            <section aria-labelledby="featured-heading" className="relative mt-16 overflow-hidden rounded-lg lg:h-96">
+              <div className="absolute inset-0">
+                <Image 
+                src={summerCollectionImg}
+                alt=""
+                className="h-full w-full object-cover object-center"
+                />
+              </div>
+              <div aria-hidden="true" className="relative h-96 w-full lg:hidden" />
+              <div aria-hidden="true" className="relative h-32 w-full lg:hidden" />
+              <div className="absolute inset-x-0 bottom-0 rounded-bl-lg rounded-br-lg bg-black bg-opacity-75 p-6 backdrop-blur backdrop-filter sm:flex sm:items-center sm:justify-between lg:inset-x-auto lg:inset-y-0 lg:w-96 lg:flex-col lg:items-start lg:rounded-br-none lg:rounded-tl-lg">
+                <div>
+                  <h2 id="featured-heading" className="text-xl font-bold text-white">
+                    Summer's Collection
+                  </h2>
+                  <p className="mt-1 text-sm text-gray-300">
+                    Upgrade your desk with objects that keep you organized and clear-minded.
+                  </p>
+                </div>
+                <Link
+                  href="#"
+                  className="mt-6 flex flex-shrink-0 items-center justify-center rounded-md border border-white border-opacity-25 bg-white bg-opacity-0 px-4 py-3 text-base font-medium text-white hover:bg-opacity-10 sm:ml-8 sm:mt-0 lg:ml-0 lg:w-full"
+                >
+                  View the collection
+                </Link>
+              </div>
+            </section>
+
             {/* Product grid */}
             <section aria-labelledby="products-heading" className="mt-8">
               <h2 id="products-heading" className="sr-only">
@@ -382,7 +327,7 @@ export default function ProductCategories() {
 
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {products1.map((product) => (
-                  <a key={product.id} href={product.href} className="group">
+                  <Link key={product.id} href={product.href} className="group">
                     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2">
                       <img
                         src={product.imageSrc}
@@ -395,7 +340,7 @@ export default function ProductCategories() {
                       <p>{product.price}</p>
                     </div>
                     <p className="mt-1 text-sm italic text-gray-500">{product.description}</p>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </section>
@@ -419,12 +364,12 @@ export default function ProductCategories() {
                     Upgrade your desk with objects that keep you organized and clear-minded.
                   </p>
                 </div>
-                <a
+                <Link
                   href="#"
                   className="mt-6 flex flex-shrink-0 items-center justify-center rounded-md border border-white border-opacity-25 bg-white bg-opacity-0 px-4 py-3 text-base font-medium text-white hover:bg-opacity-10 sm:ml-8 sm:mt-0 lg:ml-0 lg:w-full"
                 >
                   View the collection
-                </a>
+                </Link>
               </div>
             </section>
 
@@ -435,7 +380,7 @@ export default function ProductCategories() {
 
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {products2.map((product) => (
-                  <a key={product.id} href={product.href} className="group">
+                  <Link key={product.id} href={product.href} className="group">
                     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2">
                       <img
                         src={product.imageSrc}
@@ -448,7 +393,7 @@ export default function ProductCategories() {
                       <p>{product.price}</p>
                     </div>
                     <p className="mt-1 text-sm italic text-gray-500">{product.description}</p>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </section>
