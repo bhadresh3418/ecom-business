@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "vercel --pro"
+    "deploy": "vercel"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
