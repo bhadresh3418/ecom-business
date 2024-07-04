@@ -281,7 +281,7 @@ export default function Example() {
                       key={category.name}
                       className={({ selected }) =>
                         classNames(
-                          selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900',
+                          selected ? 'border-primary-600 text-primary-600' : 'border-transparent text-gray-900',
                           'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium',
                         )
                       }
@@ -490,7 +490,7 @@ export default function Example() {
                                   <PopoverButton
                                     className={classNames(
                                       open
-                                        ? 'border-indigo-600 text-indigo-600'
+                                        ? 'border-primary-600 text-primary-600'
                                         : 'border-transparent text-gray-700 hover:text-gray-800',
                                       'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out',
                                     )}
@@ -770,7 +770,7 @@ export default function Example() {
                   ))}
                 </div>
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
-                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                <a href={reviews.href} className="ml-3 text-sm font-medium text-primary-600 hover:text-primary-500">
                   {reviews.totalCount} reviews
                 </a>
               </div>
@@ -814,7 +814,7 @@ export default function Example() {
               <div className="mt-10">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-medium text-gray-900">Size</h3>
-                  <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                  <a href="#" className="text-sm font-medium text-primary-600 hover:text-primary-500">
                     Size guide
                   </a>
                 </div>
@@ -835,7 +835,7 @@ export default function Example() {
                             size.inStock
                               ? 'cursor-pointer bg-white text-gray-900 shadow-sm'
                               : 'cursor-not-allowed bg-gray-50 text-gray-200',
-                            focus ? 'ring-2 ring-indigo-500' : '',
+                            focus ? 'ring-2 ring-primary-500' : '',
                             'group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6',
                           )
                         }
@@ -846,7 +846,7 @@ export default function Example() {
                             {size.inStock ? (
                               <span
                                 className={classNames(
-                                  checked ? 'border-indigo-500' : 'border-transparent',
+                                  checked ? 'border-primary-500' : 'border-transparent',
                                   focus ? 'border' : 'border-2',
                                   'pointer-events-none absolute -inset-px rounded-md',
                                 )}
@@ -877,7 +877,7 @@ export default function Example() {
 
               <button
                 type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               >
                 Add to bag
               </button>
