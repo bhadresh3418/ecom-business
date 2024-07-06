@@ -31,6 +31,13 @@ import { StarIcon } from '@heroicons/react/20/solid'
 import ProductGrid from './ProductGrid'
 
 import products from "../../mockData/products.json"
+import StarIcons from '../common/StarIcons'
+import ProductGallery from './ProductGallery'
+import ColorSelecter from '../common/ColorSelecter'
+import SizeSelecter from '../common/SizeSelecter'
+import Policies from './Policies'
+import Description from './Description'
+import RecentReviews from './RecentReviews'
 
 const product = {
   name: 'Basic Tee',
@@ -143,18 +150,9 @@ export default function Product() {
                 {reviews.average}
                 <span className="sr-only"> out of 5 stars</span>
               </p>
-              <div className="ml-1 flex items-center">
-                {[0, 1, 2, 3, 4].map((rating) => (
-                  <StarIcon
-                    key={rating}
-                    className={classNames(
-                      reviews.average > rating ? 'text-yellow-400' : 'text-gray-200',
-                      'h-5 w-5 flex-shrink-0',
-                    )}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
+              
+              <StarIcons filled={reviews.average} />
+
               <div aria-hidden="true" className="ml-4 text-sm text-gray-300">
                 ·
               </div>
@@ -167,124 +165,23 @@ export default function Product() {
           </div>
         </div>
 
-         {/* Image gallery */}
-         <div className='mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0'>
-         <TabGroup className="flex flex-col-reverse">
-            {/* Image selector */}
-            <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
-              <TabList className="grid grid-cols-4 gap-6">
-                {product.images.map((image) => (
-                  <Tab
-                    key={image.id}
-                    className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
-                  >
-                    {({ selected }) => (
-                      <>
-                        <span className="sr-only">{image.name}</span>
-                        <span className="absolute inset-0 overflow-hidden rounded-md">
-                          <img src={image.src} alt={image.imageAlt} className="h-full w-full object-cover object-center" />
-                        </span>
-                        <span
-                          className={classNames(
-                            selected ? 'ring-primary-500' : 'ring-transparent',
-                            'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2',
-                          )}
-                          aria-hidden="true"
-                        />
-                      </>
-                    )}
-                  </Tab>
-                ))}
-              </TabList>
-            </div>
-
-            <TabPanels className="aspect-h-1 aspect-w-1 w-full">
-              {product.images.map((image) => (
-                <TabPanel key={image.id}>
-                  <img
-                    src={image.src}
-                    alt={image.imageAlt}
-                    className="h-full w-full object-cover object-center sm:rounded-lg"
-                  />
-                </TabPanel>
-              ))}
-            </TabPanels>
-          </TabGroup>
-         </div>
+        {/* Image gallery */}
+        <div className='mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0'>
         
+          <ProductGallery images={product.images} />
+
+        </div>
+
 
 
         <div className="mt-8 lg:col-span-5">
           <form>
             {/* Color picker */}
-            <div>
-              <h2 className="text-sm font-medium text-gray-900">Color</h2>
-
-              <fieldset aria-label="Choose a color" className="mt-2">
-                <RadioGroup value={selectedColor} onChange={setSelectedColor} className="flex items-center space-x-3">
-                  {product.colors.map((color) => (
-                    <Radio
-                      key={color.name}
-                      value={color}
-                      aria-label={color.name}
-                      className={({ focus, checked }) =>
-                        classNames(
-                          color.selectedColor,
-                          focus && checked ? 'ring ring-offset-1' : '',
-                          !focus && checked ? 'ring-2' : '',
-                          'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none',
-                        )
-                      }
-                    >
-                      <span
-                        aria-hidden="true"
-                        className={classNames(
-                          color.bgColor,
-                          'h-8 w-8 rounded-full border border-black border-opacity-10',
-                        )}
-                      />
-                    </Radio>
-                  ))}
-                </RadioGroup>
-              </fieldset>
-            </div>
+            <ColorSelecter colors={product.colors} selectedColor={selectedColor} setSelectedColor={setSelectedColor} />
 
             {/* Size picker */}
             <div className="mt-8">
-              <div className="flex items-center justify-between">
-                <h2 className="text-sm font-medium text-gray-900">Size</h2>
-                <a href="#" className="text-sm font-medium text-primary-600 hover:text-primary-500">
-                  See sizing chart
-                </a>
-              </div>
-
-              <fieldset aria-label="Choose a size" className="mt-2">
-                <RadioGroup
-                  value={selectedSize}
-                  onChange={setSelectedSize}
-                  className="grid grid-cols-3 gap-3 sm:grid-cols-6"
-                >
-                  {product.sizes.map((size) => (
-                    <Radio
-                      key={size.name}
-                      value={size}
-                      className={({ focus, checked }) =>
-                        classNames(
-                          size.inStock ? 'cursor-pointer focus:outline-none' : 'cursor-not-allowed opacity-25',
-                          focus ? 'ring-2 ring-primary-500 ring-offset-2' : '',
-                          checked
-                            ? 'border-transparent bg-primary-600 text-white hover:bg-primary-700'
-                            : 'border-gray-200 bg-white text-gray-900 hover:bg-gray-50',
-                          'flex items-center justify-center rounded-md border px-3 py-3 text-sm font-medium uppercase sm:flex-1',
-                        )
-                      }
-                      disabled={!size.inStock}
-                    >
-                      {size.name}
-                    </Radio>
-                  ))}
-                </RadioGroup>
-              </fieldset>
+              <SizeSelecter sizes={product.sizes} selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
             </div>
 
             <button
@@ -296,103 +193,19 @@ export default function Product() {
           </form>
 
           {/* Product details */}
-          <div className="mt-10">
-            <h2 className="text-sm font-medium text-gray-900">Description</h2>
-
-            <div
-              className="prose prose-sm mt-4 text-gray-500"
-              dangerouslySetInnerHTML={{ __html: product.description }}
-            />
+          <div className='mt-10'>
+          <Description description={product.description} details={product.details}/>
           </div>
-
-          <div className="mt-8 border-t border-gray-200 pt-8">
-            <h2 className="text-sm font-medium text-gray-900">Fabric &amp; Care</h2>
-
-            <div className="prose prose-sm mt-4 text-gray-500">
-              <ul role="list">
-                {product.details.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
           {/* Policies */}
-          <section aria-labelledby="policies-heading" className="mt-10">
-            <h2 id="policies-heading" className="sr-only">
-              Our Policies
-            </h2>
-
-            <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-              {policies.map((policy) => (
-                <div key={policy.name} className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
-                  <dt>
-                    <policy.icon className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                    <span className="mt-4 text-sm font-medium text-gray-900">{policy.name}</span>
-                  </dt>
-                  <dd className="mt-1 text-sm text-gray-500">{policy.description}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
+          <Policies policies={policies}/>
         </div>
       </div >
 
-    {/* Reviews */ }
-    <section aria-labelledby="reviews-heading" className = "mt-16 sm:mt-24" >
-        <h2 id="reviews-heading" className="text-lg font-medium text-gray-900">
-          Recent reviews
-        </h2>
+      {/* Reviews */}
+      <RecentReviews reviews={reviews}/>
 
-        <div className="mt-6 space-y-10 divide-y divide-gray-200 border-b border-t border-gray-200 pb-10">
-          {reviews.featured.map((review) => (
-            <div key={review.id} className="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
-              <div className="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
-                <div className="flex items-center xl:col-span-1">
-                  <div className="flex items-center">
-                    {[0, 1, 2, 3, 4].map((rating) => (
-                      <StarIcon
-                        key={rating}
-                        className={classNames(
-                          review.rating > rating ? 'text-yellow-400' : 'text-gray-200',
-                          'h-5 w-5 flex-shrink-0',
-                        )}
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                  <p className="ml-3 text-sm text-gray-700">
-                    {review.rating}
-                    <span className="sr-only"> out of 5 stars</span>
-                  </p>
-                </div>
-
-                <div className="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
-                  <h3 className="text-sm font-medium text-gray-900">{review.title}</h3>
-
-                  <div
-                    className="mt-3 space-y-6 text-sm text-gray-500"
-                    dangerouslySetInnerHTML={{ __html: review.content }}
-                  />
-                </div>
-              </div>
-
-              <div className="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-                <p className="font-medium text-gray-900">{review.author}</p>
-                <time
-                  dateTime={review.datetime}
-                  className="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:ml-0 lg:mt-2 lg:border-0 lg:pl-0"
-                >
-                  {review.date}
-                </time>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section >
-
-    {/* Related products */ }
-    <ProductGrid products={products}/>
+      {/* Related products */}
+      <ProductGrid products={products} />
     </div>
   )
 }
