@@ -46,44 +46,44 @@ const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false },
   { name: 'Price: High to Low', href: '#', current: false },
 ]
-const filters = [
-  {
-    id: 'category',
-    name: 'Category',
-    options: [
-      { value: 'new-arrivals', label: 'All New Arrivals', checked: false },
-      { value: 'tees', label: 'Tees', checked: false },
-      { value: 'objects', label: 'Objects', checked: true },
-      { value: 'sweatshirts', label: 'Sweatshirts', checked: false },
-      { value: 'pants-shorts', label: 'Pants & Shorts', checked: false },
-    ],
-  },
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: false },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
-    ],
-  },
-  {
-    id: 'sizes',
-    name: 'Sizes',
-    options: [
-      { value: 'xs', label: 'XS', checked: false },
-      { value: 's', label: 'S', checked: false },
-      { value: 'm', label: 'M', checked: false },
-      { value: 'l', label: 'L', checked: false },
-      { value: 'xl', label: 'XL', checked: false },
-      { value: '2xl', label: '2XL', checked: false },
-    ],
-  },
-]
-const activeFilters = [{ value: 'objects', label: 'Objects' }]
+// const filters = [
+//   {
+//     id: 'category',
+//     name: 'Category',
+//     options: [
+//       { value: 'new-arrivals', label: 'All New Arrivals', checked: false },
+//       { value: 'tees', label: 'Tees', checked: false },
+//       { value: 'objects', label: 'Objects', checked: true },
+//       { value: 'sweatshirts', label: 'Sweatshirts', checked: false },
+//       { value: 'pants-shorts', label: 'Pants & Shorts', checked: false },
+//     ],
+//   },
+//   {
+//     id: 'color',
+//     name: 'Color',
+//     options: [
+//       { value: 'white', label: 'White', checked: false },
+//       { value: 'beige', label: 'Beige', checked: false },
+//       { value: 'blue', label: 'Blue', checked: false },
+//       { value: 'brown', label: 'Brown', checked: false },
+//       { value: 'green', label: 'Green', checked: false },
+//       { value: 'purple', label: 'Purple', checked: false },
+//     ],
+//   },
+//   {
+//     id: 'sizes',
+//     name: 'Sizes',
+//     options: [
+//       { value: 'xs', label: 'XS', checked: false },
+//       { value: 's', label: 'S', checked: false },
+//       { value: 'm', label: 'M', checked: false },
+//       { value: 'l', label: 'L', checked: false },
+//       { value: 'xl', label: 'XL', checked: false },
+//       { value: '2xl', label: '2XL', checked: false },
+//     ],
+//   },
+// ]
+// const activeFilters = [{ value: 'objects', label: 'Objects' }]
 
 const products = Array.from({ length: 40 }).map((a, idx) => ({
   id: idx + 1,
@@ -124,7 +124,44 @@ function classNames(...classes) {
 export default function ProductsPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [selectedSortOptions,setSelectedSortOptions]=useState("Sort")
-
+const [filters,setFilters]=useState([
+  {
+    id: 'category',
+    name: 'Category',
+    options: [
+      { value: 'new-arrivals', label: 'All New Arrivals', checked: false },
+      { value: 'tees', label: 'Tees', checked: false },
+      { value: 'objects', label: 'Objects', checked: true },
+      { value: 'sweatshirts', label: 'Sweatshirts', checked: false },
+      { value: 'pants-shorts', label: 'Pants & Shorts', checked: false },
+    ],
+  },
+  {
+    id: 'color',
+    name: 'Color',
+    options: [
+      { value: 'white', label: 'White', checked: false },
+      { value: 'beige', label: 'Beige', checked: false },
+      { value: 'blue', label: 'Blue', checked: false },
+      { value: 'brown', label: 'Brown', checked: false },
+      { value: 'green', label: 'Green', checked: false },
+      { value: 'purple', label: 'Purple', checked: false },
+    ],
+  },
+  {
+    id: 'sizes',
+    name: 'Sizes',
+    options: [
+      { value: 'xs', label: 'XS', checked: false },
+      { value: 's', label: 'S', checked: false },
+      { value: 'm', label: 'M', checked: false },
+      { value: 'l', label: 'L', checked: false },
+      { value: 'xl', label: 'XL', checked: false },
+      { value: '2xl', label: '2XL', checked: false },
+    ],
+  },
+])
+const [activeFilters,setActiveFilters]=useState([{ value: 'objects', label: 'Objects' }])
   return (
     <div>
 
@@ -264,7 +301,7 @@ export default function ProductsPage() {
                           <span>{section.name}</span>
                           {sectionIdx === 0 ? (
                             <span className="ml-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
-                              1
+                              {section.options.filter((sect)=>sect.checked)?.length}
                             </span>
                           ) : null}
                           <ChevronDownIcon
@@ -287,6 +324,15 @@ export default function ProductsPage() {
                                   name={`${section.id}[]`}
                                   type="checkbox"
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  onChange={(e)=>{
+                                    option.checked=e.target.checked
+                                    setFilters([...filters])
+                                    if (activeFilters.find((filte)=>filte.value===option.value)) {
+                                      setActiveFilters(activeFilters.filter((avai)=>avai.value != option.value))
+                                    } else {
+                                      setActiveFilters((pre)=>[...pre,{label:option.label,value:option.value}])
+                                    }
+                                  }}
                                 />
                                 <label
                                   htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -327,6 +373,9 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         className="ml-1 inline-flex h-4 w-4 flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-500"
+                        // onClick={()=>{
+                        //   setActiveFilters(activeFilters.filter((avai)=>avai.value != activeFilter.value))
+                        // }}
                       >
                         <span className="sr-only">Remove filter for {activeFilter.label}</span>
                         <svg fill="none" stroke="currentColor" viewBox="0 0 8 8" className="h-2 w-2">

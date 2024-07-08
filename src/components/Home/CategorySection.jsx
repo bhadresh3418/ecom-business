@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const CategorySection = () => {
@@ -8,10 +9,10 @@ const CategorySection = () => {
         <h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">
           Shop by Category
         </h2>
-        <a href="#" className="hidden text-sm font-semibold text-primary-600 hover:text-primary-500 sm:block">
+        <Link href="#" className="hidden text-sm font-semibold text-primary-600 hover:text-primary-500 sm:block">
           Browse all categories
           <span aria-hidden="true"> &rarr;</span>
-        </a>
+        </Link>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
@@ -25,10 +26,10 @@ const CategorySection = () => {
           <div className="flex items-end p-6">
             <div>
               <h3 className="font-semibold text-white">
-                <a href="#">
+                <Link href="/categories?id=new_arrivals">
                   <span className="absolute inset-0" />
                   New Arrivals
-                </a>
+                </Link>
               </h3>
               <p aria-hidden="true" className="mt-1 text-sm text-white">
                 Shop now
@@ -49,10 +50,10 @@ const CategorySection = () => {
           <div className="flex items-end p-6 sm:absolute sm:inset-0">
             <div>
               <h3 className="font-semibold text-white">
-                <a href="#">
+                <Link href="/categories?id=accessories">
                   <span className="absolute inset-0" />
                   Accessories
-                </a>
+                </Link>
               </h3>
               <p aria-hidden="true" className="mt-1 text-sm text-white">
                 Shop now
@@ -73,10 +74,10 @@ const CategorySection = () => {
           <div className="flex items-end p-6 sm:absolute sm:inset-0">
             <div>
               <h3 className="font-semibold text-white">
-                <a href="#">
+              <Link href="/categories?id=workspace">
                   <span className="absolute inset-0" />
                   Workspace
-                </a>
+                </Link>
               </h3>
               <p aria-hidden="true" className="mt-1 text-sm text-white">
                 Shop now
@@ -87,10 +88,10 @@ const CategorySection = () => {
       </div>
 
       <div className="mt-6 sm:hidden">
-        <a href="#" className="block text-sm font-semibold text-primary-600 hover:text-primary-500">
+        <Link href="#" className="block text-sm font-semibold text-primary-600 hover:text-primary-500">
           Browse all categories
           <span aria-hidden="true"> &rarr;</span>
-        </a>
+        </Link>
       </div>
     </div>
   </section>

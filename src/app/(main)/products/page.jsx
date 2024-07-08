@@ -1,9 +1,12 @@
 import ProductsPage from "@/components/Products/ProductsPage";
 
-export default function Products() {
-    return (
-      <>
-       <ProductsPage/>
-      </>
-    )
-  }
+function Products() {
+  return (
+    <>
+      <ProductsPage />
+    </>
+  )
+}
+
+
+export default Products;

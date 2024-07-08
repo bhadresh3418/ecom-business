@@ -17,6 +17,8 @@ import {
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, ShoppingCartIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 import { Link } from './common/link'
+import Cart from './cart/Cart'
+// import Cart from './cart/cart'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -146,7 +148,7 @@ const navigation = {
 
 export function Header() {
   const [open, setOpen] = useState(false)
-
+const [openCart,setOpenCart]=useState(false)
   return (
     <div>
       {/* Mobile menu */}
@@ -440,6 +442,7 @@ export function Header() {
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
+                      onClick={()=>setOpenCart(!openCart)}
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
                     <span className="sr-only">items in cart, view bag</span>
@@ -450,6 +453,7 @@ export function Header() {
           </div>
         </nav>
       </header>
+      <Cart open={openCart} setOpen={setOpenCart}/>
     </div>
   )
 }

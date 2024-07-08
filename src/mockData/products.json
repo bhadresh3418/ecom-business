@@ -8,7 +8,8 @@
         "imageAlt": "Front of men's Basic Tee in white.",
         "color": "Black"
     },
-    {           
+    {    
+        "id": 2,
         "name": "Basic Tee",
         "href": "/product/1",
         "price": "$35",
@@ -17,6 +18,7 @@
         "color": "Aspen White"
     },
     {
+        "id": 3,
         "name": "Basic Tee",
         "href": "/product/1",
         "price": "$35",
@@ -25,6 +27,7 @@
         "color": "Charcoal"
     },
     {
+        "id": 4,
         "name": "Basic Tee",
         "href": "/product/1",
         "price": "$35",

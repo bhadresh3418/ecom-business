@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const CtaSection = () => {
@@ -14,10 +15,10 @@ const CtaSection = () => {
                       Up to 50% off.
                     </h2>
                     <div className="mt-6 text-base">
-                      <a href="#" className="font-semibold text-white">
+                      <Link href="/products" className="font-semibold text-white">
                         Shop the sale
                         <span aria-hidden="true"> &rarr;</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
