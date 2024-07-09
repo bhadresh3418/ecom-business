@@ -20,10 +20,7 @@ import FavoritesSection from "./FavoritesSection"
 import FeaturedSection from "./FeaturedSection"
 import Hero from "./Hero"
 
-
-
-
-export default function Example() {
+export default function HeroSection() {
   return (
     <div>
       <main>

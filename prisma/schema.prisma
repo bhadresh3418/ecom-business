@@ -1,0 +1,19 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "postgres://default:met9yd8WZJYS@ep-sweet-lake-a4zo14e1-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
+  directUrl = "postgres://default:met9yd8WZJYS@ep-sweet-lake-a4zo14e1.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+}
+
+model User {
+  id            String    @default(cuid()) @id
+  firstName     String?   
+  lastName      String?     
+  email         String    @unique
+  password      String  
+  @@map(name: "users")
+}
